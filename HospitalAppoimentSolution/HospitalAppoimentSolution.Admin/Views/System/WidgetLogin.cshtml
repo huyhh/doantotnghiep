@@ -1,0 +1,40 @@
+﻿@model HospitalAppoimentSolution.Data.ViewModels.ResponseStaffLogin
+@if (Model != null && Model.ID != 0)
+{
+    <li class="nav-item dropdown has-arrow">
+        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <span class="user-img"><img class="rounded-circle" src="/Content/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
+        </a>
+        <div class="dropdown-menu">
+            <div class="user-header">
+                <div class="avatar avatar-sm">
+                    <img src="/Content/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
+                </div>
+                <div class="user-text">
+                    <h6>@Model.Name</h6>
+                    <p class="text-muted mb-0">Administrator</p>
+                </div>
+            </div>
+            <a class="dropdown-item" href="/System/Profiles">Thông tin</a>
+            <a class="dropdown-item" href="#" onclick="logOut()"> Đăng xuất</a>
+        </div>
+    </li>
+}
+<script>
+    function logOut() {
+        $.ajax({
+            url: "/System/Logout",
+            type: "POST",
+            traditional: true,
+            datatype: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                //alert(result);
+                location.href = "/";
+            },
+            error: function () {
+                return false;
+            }
+        });
+    }
+</script>

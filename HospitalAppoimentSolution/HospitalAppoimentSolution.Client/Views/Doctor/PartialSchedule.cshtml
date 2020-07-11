@@ -1,0 +1,91 @@
+﻿@model IEnumerable<HospitalAppoimentSolution.Data.ViewModels.ScheduleDayView>
+<div class="card">
+    <div class="card-body pt-0">
+
+        <!-- Tab Menu -->
+        <nav class="user-tabs mb-4">
+            <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#doc_overview" data-toggle="tab">Chọn thời gian</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /Tab Menu -->
+        <!-- Tab Content -->
+        <div class="tab-content pt-0">
+
+            <!-- Overview Content -->
+            <div class="card booking-schedule schedule-widget">
+
+                <!-- Schedule Header -->
+                <div class="schedule-header">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- Day Slot -->
+                            <div class="day-slot">
+                                <ul>
+
+                                    @if (Model != null && Model.Count() > 0)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+
+                                            <li>
+                                                <div>
+                                                    <span>@item.DayOfWeek</span>
+                                                    <span class="slot-date">@item.DateName</span>
+                                                </div>
+                                                <div class="time-slot">
+                                                    <ul class="clearfix">
+
+                                                        @if (item.LstTime != null && item.LstTime.Count() > 0)
+                                                        {
+                                                            foreach (var time in item.LstTime)
+                                                            {
+                                                                var url = $"/xac-nhan-dat-lich.html?id={@ViewBag.DoctorID}&date={item.Date}&time={time.Name}";
+                                                                if (time.IsSold)
+                                                                {
+                                                                    <li>
+                                                                        <a class="timing active" >
+                                                                            <span>@time.Name</span>
+                                                                        </a>
+                                                                    </li>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <li>
+                                                                        <a class="timing" href="@url">
+                                                                            <span>@time.Name</span>
+                                                                        </a>
+                                                                    </li>
+                                                                }
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="login-or">
+                                                    <span class="or-line"></span>
+
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+
+                                </ul>
+                            </div>
+                            <!-- /Day Slot -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /Schedule Header -->
+                <!-- Schedule Content -->
+                <!-- /Schedule Content -->
+
+            </div>
+
+        </div>
+    </div>
+</div>

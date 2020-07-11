@@ -1,0 +1,64 @@
+﻿@model IEnumerable<HospitalAppoimentSolution.Data.ViewModels.PatientView>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Bệnh nhân</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Bệnh nhân</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        <!-- /Page Header -->
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- Recent Orders -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table">
+                            <table class="datatable table table-hover table-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Tên</th>
+                                        <th>Thông tin</th>
+                                        <th>Ngày đăng ký</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Count() > 0)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.ID</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Address<br />@item.Phone<br />@item.Email<br />@string.Format("{0:dd/MM/yyyy}", item.BirthDay)</td>
+                                                <td>@string.Format("{0:dd/MM/yyyy}",item.DateCreate)</td>
+                                                
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Recent Orders -->
+
+            </div>
+        </div>
+    </div>
+

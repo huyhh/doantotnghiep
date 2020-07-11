@@ -1,0 +1,52 @@
+﻿@model IEnumerable<HospitalAppoimentSolution.Data.ViewModels.NewsView>
+@using HospitalAppoimentSolution.Helper.Core
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row blog-grid-row">
+            <!-- Doctor Widget -->
+            @if (Model != null && Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    var url = $"/tin-tuc/{item.Title.ToUrlFormat(true, true)}-{item.ID}.html";
+                    <div class="col-md-6 col-lg-4 col-sm-12">
+
+                        <!-- Blog Post -->
+                        <div class="blog grid-blog">
+                            <div class="blog-image">
+                                <a href="@url"><img class="img-fluid" src="@item.Avatar" alt="Post Image"></a>
+                            </div>
+                            <div class="blog-content">
+
+                                <h3 class="blog-title"><a href="@url">@item.Title</a></h3>
+                                @if (item.Desc != null)
+                                {
+                                    if (item.Desc.Length > 150)
+                                    {
+                                        <p class="mb-0">@item.Desc.Substring(0, 147) [..]</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="mb-0">@item.Desc</p>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <!-- /Blog Post -->
+
+                    </div>
+                }
+            }
+            <!-- /Doctor Widget -->
+        </div>
+
+    </div>
+
+</div>
+

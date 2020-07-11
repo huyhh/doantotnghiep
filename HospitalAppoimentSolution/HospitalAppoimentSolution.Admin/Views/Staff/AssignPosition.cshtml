@@ -1,0 +1,109 @@
+﻿@model IEnumerable<HospitalAppoimentSolution.Data.ViewModels.AssignPositionView>
+@{
+    ViewBag.Title = "AssignPosition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-7">
+                <h3 class="page-title">Phân công</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Phân công</li>
+                </ul>
+            </div>
+            <div class="col-sm-5 col">
+                <a href="/Staff/AssignPositionAdd" class="btn btn-primary float-right mt-2">Thêm</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Recent Orders -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table">
+                        <table class="datatable table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Nhân viên</th>
+                                    <th>Phòng ban</th>
+                                    <th>Chức vụ</th>
+                                    <th>Mô tả</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Count() > 0)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Staff</td>
+                                            <td>@item.Department</td>
+                                            <td>
+                                                @item.Position
+                                            </td>
+                                            <td>@item.Desc</td>
+                                            <td class="action-td">
+                                                <div class="row">
+                                                    <a id="r_@item.DepartmentID@item.StaffID@item.PositionID" onclick="deletes('/Staff/AssignPositionDelete?id=@item.PositionID&sid=@item.StaffID&did=@item.DepartmentID','@item.DepartmentID@item.StaffID@item.PositionID','@item.Staff-@item.Department-@item.Position')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /Recent Orders -->
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function deletes(action, id, name) {
+        $.confirm({
+            title: 'Thông báo!',
+            content: 'Xác nhận để xóa dữ liệu này - [' + name + ']',
+            buttons: {
+                ok: function () {
+                    $.ajax({
+                        method: "GET",
+                        url: action,
+                    }).done(function (result) {
+                        if (result != '') {
+                            $.alert({
+                                title: 'Thông báo!',
+                                content: 'Xảy ra lỗi khi xóa dữ liệu:' + result,
+                            });
+                        }
+                        else {
+                            var i = jQuery('#r_' + id).closest('tr');
+                            i.remove();
+                            $.alert({
+                                title: 'Thông báo!',
+                                content: 'Đã xóa dữ liệu thanh công!',
+                            });
+                        }
+                    })
+                },
+                cancel: function () {
+                    return;
+                }
+            }
+        });
+    }
+</script>
+

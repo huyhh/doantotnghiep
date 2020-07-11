@@ -1,0 +1,77 @@
+﻿@model IEnumerable<HospitalAppoimentSolution.Data.ViewModels.DoctorScheduleView>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-7">
+                <h3 class="page-title">Lịch làm việc</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Lịch làm việc</li>
+                </ul>
+            </div>
+            <div class="col-sm-5 col">
+                <a href="/DoctorSchedule/Add/@ViewBag.DoctorID" class="btn btn-primary float-right mt-2">Thêm</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Recent Orders -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table">
+                        <table class="datatable table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên</th>
+                                    <th>Ngày</th>
+                                    <th>Ca</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model != null && Model.Count() > 0)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.ID</td>
+                                            <td>@item.Doctor</td>
+                                            <td>@item.DayName</td>
+                                            <td>
+                                                @foreach (var s in item.ShiftTimes)
+                                                {
+                                                    <p>@s.Name</p><br />
+                                                }
+                                            </td>
+                                            <td class="action-td">
+                                                <div class="row">
+                                                    <a class="btn btn-success" href="/DoctorSchedule/Edit?id=@item.ID&day=@item.Day"><i class="fa fa-edit"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /Recent Orders -->
+
+        </div>
+    </div>
+</div>
+

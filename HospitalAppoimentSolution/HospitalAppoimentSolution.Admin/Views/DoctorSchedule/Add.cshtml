@@ -1,0 +1,90 @@
+﻿@model HospitalAppoimentSolution.Data.ViewModels.DoctorScheduleView
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col">
+                <h3 class="page-title">Thêm mới lịch</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Thêm mới</h4>
+                </div>
+                <div class="card-body">
+
+                    @using (Html.BeginForm("Add", "DoctorSchedule", FormMethod.Post, new { @id = "addForm" }))
+                    {
+                        @Html.ValidationSummary(true, "ExistsDataError", new { @class = "label-danger" })
+                        @Html.TextBoxFor(model => model.ID, new { @class = "form-control", @placeholder = "Name", @type = "hide", @style = "display:none" })
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">Ngày</label>
+                            <span class="desc"></span>
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.Day, new SelectList(ViewBag.DayLst, "ID", "Name", "....Select...."), new { @class = "form-control", @placeholder = "Product Category" })
+                            </div>
+                        </div>
+                        <div class="form-group" id="dTourApply">
+                            <label class="form-label">Ca</label>
+                            <span class="desc">Chọn ca làm việc trong ngày</span>
+                            <select class="" id="s2example-22" multiple>
+                                <option></option>
+                                <optgroup label="Ca">
+                                    @if (ViewBag.ShiftLst != null)
+                                    {
+                                        foreach (var item in (List<HospitalAppoimentSolution.Data.ViewModels.ShiftTimeView>)ViewBag.ShiftLst)
+                                        {
+                                            <option value="@item.ID">@item.Name-[@item.ID]</option>
+                                        }
+                                    }
+
+                                </optgroup>
+                            </select>
+                            @Html.TextBoxFor(model => model.Shift, new { @class = "form-control", @placeholder = "Shift", @type = "hidden" })
+                        </div>
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-bottom-30">
+                            <div class="text-left">
+                                <button type="button" onclick="Save()" class="btn btn-primary">Lưu</button>
+                                <button type="button" class="btn">Hủy</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    function Save() {
+        var product = "";
+        $("#dTourApply li").each(function (index, item) {
+            if ($(item).attr("class").includes("select2-search-choice")) {
+                product += $(item).find("div")[0].innerHTML.split('[')[1].replace(']', '') + "|";
+            }
+        })
+
+        $("#Shift").val(product);
+        $("#addForm").submit();
+    }
+</script>

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Home Banner -->
+<section class="section section-search">
+    <div class="container-fluid">
+        <div class="banner-wrapper">
+            <div class="banner-header text-center">
+                <h1>Tìm kiếm bác sĩ phù hợp với bạn</h1>
+                <p>Bước đầu tiên để đặt được một cuộc hẹn, bạn cần tìm một bác sĩ phù hợp</p>
+            </div>
+
+            <!-- Search -->
+            <div class="search-box">
+                <form action="https://dreamguys.co.in/demo/doccure/template/search.html">
+
+                    <div class="form-group search-info">
+                        <input type="text" class="form-control" placeholder="Nhập tên bác sĩ, hoặc chuyên khoa">
+                    </div>
+                    <button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i> <span>Tìm kiếm</span></button>
+                </form>
+            </div>
+            <!-- /Search -->
+
+        </div>
+    </div>
+</section>
+<!-- /Home Banner -->
+<!-- Clinic and Specialities -->
+
+@Html.Action("Deparment", "home")
+<!-- Clinic and Specialities -->
+<!-- Popular Section -->
+@Html.Action("Doctors", "Home")
+<!-- /Popular Section -->
+<!-- Availabe Features -->
+@Html.Action("Promotions", "Home")
+<!-- /Availabe Features -->
+<!-- Blog Section -->
+@Html.Action("News", "Home")
+<!-- /Blog Section -->

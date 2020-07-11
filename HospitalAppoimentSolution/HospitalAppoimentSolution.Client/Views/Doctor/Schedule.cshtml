@@ -1,0 +1,75 @@
+﻿@model HospitalAppoimentSolution.Data.ViewModels.DoctorView
+@{
+    ViewBag.Title = "Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content">
+        <div class="container">
+            @{ int f = @HospitalAppoimentSolution.Helper.Core.RandomUtils.RandomInt(99, 999);}
+            <!-- Doctor Widget -->
+            @if (Model != null && Model.ID != 0)
+            {
+                var url = $"/book-{Model.ID}.html";
+                <div class="card">
+                    <div class="card-body">
+                        <div class="doctor-widget">
+                            <div class="doc-info-left">
+                                <div class="doctor-img">
+                                    <img src="@Model.Avatar" class="img-fluid" alt="User Image">
+                                </div>
+                                <div class="doc-info-cont">
+                                    <h4 class="doc-name">@Model.Name</h4>
+                                    <p class="doc-speciality">@Model.Address</p>
+                                    <p class="doc-department"><img src="/Content/img/specialities/specialities-5.png" class="img-fluid" alt="Speciality">@Model.DepartmentName</p>
+                                    <div class="rating">
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="d-inline-block average-rating">(@f)</span>
+                                    </div>
+                                    <div class="clinic-details">
+                                        <p class="doc-location"><i class="fas fa-phone"></i> @Model.Phone</p>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="doc-info-right">
+                                <div class="clini-infos">
+                                    <ul>
+                                        <li><i class="far fa-thumbs-up"></i> @HospitalAppoimentSolution.Helper.Core.RandomUtils.RandomInt(88, 99)%</li>
+                                        <li><i class="far fa-comment"></i> @f Feedback</li>
+                                        <li><i class="fas fa-map-marker-alt"></i> @Model.Address</li>
+                                        <li><i class="far fa-money-bill-alt"></i> @String.Format("{0:0,00} đ", Model.Price) /giờ </li>
+                                    </ul>
+                                </div>
+                                <div class="doctor-action">
+                                    <a href="javascript:void(0)" class="btn btn-white fav-btn">
+                                        <i class="far fa-bookmark"></i>
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn btn-white msg-btn">
+                                        <i class="far fa-comment-alt"></i>
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn btn-white call-btn">
+                                        <i class="fas fa-phone"></i>
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn btn-white call-btn">
+                                        <i class="fas fa-video"></i>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- /Doctor Widget -->
+            <!-- Doctor Details Tab -->
+            <!-- /Doctor Details Tab -->
+            @Html.Action("PartialSchedule", "Doctor", new { @id = Model.ID })
+        </div>
+    </div>
+

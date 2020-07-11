@@ -1,0 +1,77 @@
+﻿@model HospitalAppoimentSolution.Data.ViewModels.PatientView
+@{
+    ViewBag.Title = "Profiles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar dct-dashbd-lft">
+
+                    <!-- Profile Widget -->
+                    <div class="card widget-profile pat-widget-profile">
+                        <div class="card-body">
+                            <div class="pro-widget-content">
+                                <div class="profile-info-widget">
+
+                                    @if (Model != null && Model.ID != 0)
+                                    {
+                                        <div class="profile-det-info">
+                                            <h3>@Model.Name</h3>
+
+                                            <div class="patient-details">
+                                                <h5><b>Ngày sinh :</b> @Model.BirthDay</h5>
+                                                <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> @Model.Address</h5>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="patient-info">
+                                <ul>
+                                    @if (Model != null)
+                                    {
+                                        <li>Phone <span>@Model.Phone</span></li>
+                                        <li>Email <span>@Model.Email</span></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Profile Widget -->
+                    <!-- Last Booking -->
+                    <a href="/cap-nhat-tai-khoan.html" style="margin-bottom:100px" class="btn view-btn" >Cập nhật thông tin</a>
+                    <!-- /Last Booking -->
+
+                </div>
+
+                <div class="col-md-7 col-lg-8 col-xl-9 dct-appoinment">
+                    <div class="card">
+                        <div class="card-body pt-0">
+                            <div class="user-tabs">
+                                <ul class="nav nav-tabs nav-tabs-bottom nav-justified flex-wrap">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#pat_appointments" data-toggle="tab">Lịch hẹn</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+
+                                <!-- Appointment Tab -->
+                                <div id="pat_appointments" class="tab-pane fade show active">
+                                    @Html.Action("OrderWidget", "Patient")
+                                </div>
+                                <!-- /Appointment Tab -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+

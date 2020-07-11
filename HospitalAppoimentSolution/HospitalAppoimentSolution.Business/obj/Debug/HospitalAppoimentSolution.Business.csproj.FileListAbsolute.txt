@@ -1,0 +1,16 @@
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\obj\Debug\HospitalAppoimentSolution.Business.csprojAssemblyReference.cache
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\obj\Debug\HospitalAppoimentSolution.Business.csproj.CoreCompileInputs.cache
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\HospitalAppoimentSolution.Business.dll
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\HospitalAppoimentSolution.Business.pdb
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\HospitalAppoimentSolution.Data.dll
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\HospitalAppoimentSolution.Helper.dll
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\HospitalAppoimentSolution.Services.dll
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\EntityFramework.dll
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\HospitalAppoimentSolution.Data.pdb
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\HospitalAppoimentSolution.Helper.pdb
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\HospitalAppoimentSolution.Services.pdb
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\HospitalAppoimentSolution.Services.dll.config
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\bin\Debug\EntityFramework.xml
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\obj\Debug\HospitalAppoimentSolution.Business.csproj.CopyComplete
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\obj\Debug\HospitalAppoimentSolution.Business.dll
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Business\obj\Debug\HospitalAppoimentSolution.Business.pdb

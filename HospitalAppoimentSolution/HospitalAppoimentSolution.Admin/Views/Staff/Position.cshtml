@@ -1,0 +1,106 @@
+﻿@model IEnumerable<HospitalAppoimentSolution.Data.ViewModels.PositionActionView>
+@{
+    ViewBag.Title = "Position";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-7">
+                <h3 class="page-title">Chức vụ</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Chức vụ</li>
+                </ul>
+            </div>
+            <div class="col-sm-5 col">
+                <a href="/Staff/PositionAdd" class="btn btn-primary float-right mt-2">Thêm</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Recent Orders -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table">
+                        <table class="datatable table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên</th>
+                                    <th>Mô tả</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Count() > 0)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.ID</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.Desc</td>
+                                            <td class="action-td">
+                                                <div class="row">
+                                                    <a class="btn btn-success" href="/Staff/PositionEdit/@item.ID"><i class="fa fa-edit"></i></a>
+                                                    <a id="r_@item.ID" onclick="deletes('/Staff/PositionDelete/@item.ID','@item.ID','@item.Title')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /Recent Orders -->
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function deletes(action, id, name) {
+        $.confirm({
+            title: 'Thông báo!',
+            content: 'Xác nhận để xóa dữ liệu này - [' + name + ']',
+            buttons: {
+                ok: function () {
+                    $.ajax({
+                        method: "GET",
+                        url: action,
+                    }).done(function (result) {
+                        if (result != '') {
+                            $.alert({
+                                title: 'Thông báo!',
+                                content: 'Xảy ra lỗi khi xóa dữ liệu:' + result,
+                            });
+                        }
+                        else {
+                            var i = jQuery('#r_' + id).closest('tr');
+                            i.remove();
+                            $.alert({
+                                title: 'Thông báo!',
+                                content: 'Đã xóa dữ liệu thanh công!',
+                            });
+                        }
+                    })
+                },
+                cancel: function () {
+                    return;
+                }
+            }
+        });
+    }
+</script>
+

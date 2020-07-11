@@ -1,0 +1,180 @@
+﻿@model HospitalAppoimentSolution.Data.ViewModels.DoctorView
+@{
+    ViewBag.Title = "Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="container">
+        <div class="row" style="transform: none;">
+            <div class="col-md-6 col-lg-6 theiaStickySidebar" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+                <!-- Booking Summary -->
+                <!-- /Booking Summary -->
+
+                <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: relative; transform: none;">
+                    <div class="card booking-card">
+                        <div class="card-header">
+                            <h4 class="card-title">Bác sĩ</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <!-- Booking Doctor Info -->
+                            <div class="booking-doc-info">
+                                <a href="doctor-profile.html" class="booking-doc-img">
+                                    <img src="@Model.Avatar" alt="User Image">
+                                </a>
+                                <div class="booking-info">
+                                    <h4><a href="doctor-profile.html">@Model.Name</a></h4>
+                                    <div class="rating">
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="clinic-details">
+                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> @Model.Address</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Booking Doctor Info -->
+
+                            <div class="booking-summary">
+                                <div class="booking-item-wrap">
+                                    <ul class="booking-date">
+                                        <li>Date <span>@ViewBag.Date</span></li>
+                                        <li>Time <span>@ViewBag.Time</span></li>
+                                    </ul>
+                                    <ul class="booking-fee">
+                                        <li>Phí <span>@String.Format("{0:0,00}", Model.Price)</span></li>
+                                        <li>
+                                            Khuyến mãi <input id="ip_Code" style="height: 25px;margin-right: 2px;width: 90px;">
+                                            <a class="btn btn-primary" onclick="checkPromotion(@Model.Price,@Model.ID)" style="height: 25px;width: 90px;font-size: 14px;border-radius: 2px;line-height:15px;color:#fff;letter-spacing:1px">Kiểm tra</a>
+                                            <input type="hidden" id="ip_HideCode" />
+                                        </li>
+
+                                        <li>Giảm giá <span id="bReduce">0</span></li>
+                                    </ul>
+                                    <div class="booking-total">
+                                        <ul class="booking-total-list">
+                                            <li>
+                                                <span>Thành tiền</span>
+                                                <span class="total-cost" id="bAmount">@String.Format("{0:0,00}", Model.Price)</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 347px; height: 483px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+
+                        <!-- Checkout Form -->
+                        <!-- Personal Information -->
+                        <!-- /Personal Information -->
+
+                        <div class="payment-widget">
+                            <h4 class="card-title">Hình thức thanh toán</h4>
+
+                            <!-- Credit Card Payment -->
+                            <div class="payment-list">
+                                <label class="payment-radio credit-card-option">
+                                    <input type="radio" value="1" name="typePayment" checked="">
+                                    <span class="checkmark"></span>
+                                    ATM Nội Địa
+                                </label>
+
+                            </div>
+                            <!-- /Credit Card Payment -->
+                            <!-- Paypal Payment -->
+                            <div class="payment-list">
+                                <label class="payment-radio paypal-option">
+                                    <input type="radio" value="2" name="typePayment">
+                                    <span class="checkmark"></span>
+                                    VISA, MASTER, JCB, AMEX, CUP
+                                </label>
+                            </div>
+                            <!-- /Paypal Payment -->
+                            <!-- Terms Accept -->
+                            <!-- /Terms Accept -->
+                            <!-- Submit Section -->
+                            <div class="submit-section mt-4">
+                                <button type="button" class="btn btn-primary submit-btn" onclick="paymentAction(@Model.ID,'@ViewBag.Date','@ViewBag.Time')">Thanh toán</button>
+                            </div>
+                            <!-- /Submit Section -->
+
+                        </div>
+                        <!-- /Checkout Form -->
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function ApplyPromotionParam(code, price, id) {
+        var t = this;
+        t.Code = code;
+        t.Price = price;
+        t.DoctorID = id;
+    }
+    function PaymentParam(tid, type, code, date, time) {
+        var t = this;
+        t.DoctorID = tid;
+        t.TypePay = type;
+        t.PCode = code;
+        t.Date = date;
+        t.Time = time;
+    }
+    function checkPromotion(price, id) {
+        var code = $("#ip_Code").val();
+        if (code == "" || code == undefined || code == null) {
+            return;
+        }
+        var data = JSON.stringify(new ApplyPromotionParam(code, price, id));
+        $.ajax({
+            url: "/Doctor/CheckPromotion",
+            type: "POST",
+            data: data,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                if (result.Status == 1) {
+                    $("#ip_HideCode").val(code);
+                    $("#bReduce").html(result.Reduce);
+                    $("#bAmount").html(result.Price);
+                }
+                else {
+                    alert("Mã khuyến mãi không đúng, hoặc không phù hợp.");
+                }
+            }
+        })
+    }
+    function paymentAction(id, date, time) {
+        var code = $("#ip_HideCode").val();
+        var type = $("input[name='typePayment']:checked").val();
+        var data = JSON.stringify(new PaymentParam(id, type, code, date, time));
+        $.ajax({
+            url: "/Doctor/Payment",
+            type: "POST",
+            data: data,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                if (result.Status == 1) {
+                    location.href = result.Uri;
+                }
+            }
+        })
+    }
+</script>

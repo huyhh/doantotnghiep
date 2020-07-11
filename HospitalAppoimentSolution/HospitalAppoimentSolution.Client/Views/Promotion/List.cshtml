@@ -1,0 +1,56 @@
+﻿@model IEnumerable<HospitalAppoimentSolution.Data.ViewModels.PromotionView>
+    @using HospitalAppoimentSolution.Helper.Core
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row blog-grid-row">
+                <!-- Doctor Widget -->
+                @if (Model != null && Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        var url = $"/khuyen-mai/{item.Title.ToUrlFormat(true, true)}-{item.ID}.html";
+                        <div class="col-md-6 col-lg-4 col-sm-12">
+
+                            <!-- Blog Post -->
+                            <div class="blog grid-blog">
+                                <div class="blog-image">
+                                    <a href="@url"><img class="img-fluid" src="@item.Avatar" alt="Post Image"></a>
+                                </div>
+                                <div class="blog-content">
+                                    <ul class="entry-meta meta-item">
+
+                                        <li><i class="far fa-clock"></i> @String.Format("{0:dd/MM/yyyy}", item.StartDate) -  @String.Format("{0:dd/MM/yyyy}", item.EndDate)</li>
+                                        <li style=" text-transform: uppercase; color: #6f37ec; font-weight: 600; letter-spacing: 1px;"><i class="far fa-file-code"></i> @item.Code</li>
+                                    </ul>
+                                    <h3 class="blog-title"><a href="@url">@item.Title</a></h3>
+                                    @if (item.Desc != null)
+                                    {
+                                        if (item.Desc.Length > 150)
+                                        {
+                                            <p class="mb-0">@item.Desc.Substring(0, 147) [..]</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="mb-0">@item.Desc</p>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <!-- /Blog Post -->
+
+                        </div>
+                    }
+                }
+                <!-- /Doctor Widget -->
+            </div>
+
+        </div>
+
+    </div>
+

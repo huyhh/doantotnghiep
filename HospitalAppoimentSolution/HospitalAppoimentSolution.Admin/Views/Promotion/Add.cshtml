@@ -1,0 +1,183 @@
+﻿@model HospitalAppoimentSolution.Data.ViewModels.PromotionView
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col">
+                <h3 class="page-title">Thêm mới khuyến mãi</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Thêm mới</h4>
+                </div>
+                <div class="card-body">
+
+                    @using (Html.BeginForm("Add", "Promotion", FormMethod.Post,new {@id= "addForm" }))
+                    {
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">Tiêu đề</label>
+                            <span class="desc"></span>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control", @placeholder = "Title" })
+                                @Html.ValidationMessageFor(model => model.Title)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">Mô tả</label>
+                            <span class="desc"></span>
+                            <div class="controls">
+                                @Html.TextAreaFor(model => model.Desc, new { @class = "form-control", @placeholder = "Desc" })
+                                @Html.ValidationMessageFor(model => model.Desc)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-5">Trạng thái</label>
+                            <span class="desc"></span>
+                            <select name="Status" id="Status" class="form-control">
+                                <option selected value="true">Hiện</option>
+                                <option value="false">Ẩn</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-5">Hình thức giảm giá</label>
+                            <span class="desc"></span>
+                            <select name="Type" id="Type" class="form-control">
+                                <option selected value="1">Giảm giá trực tiếp</option>
+                                <option value="2">Giảm theo phần trăm</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">Start Date</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <div class="controls">
+                                        <input type="text" name="StartDate" id="StartDate" readonly class="form-control datepicker" data-format="dd/mm/yyyy" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">End Date</label>
+                                <span class="desc">Nếu không có giới hạn hãy để trống phần này</span>
+                                <div class="controls">
+                                    <div class="controls">
+                                        <input type="text" name="EndDate" id="EndDate" readonly class="form-control datepicker1" data-format="dd/mm/yyyy" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="dTourApply">
+                            <label class="form-label">Danh sách Bác sĩ</label>
+                            <span class="desc">Chỉ chọn khi khuyến mãi áp dụng cho một danh sách Bác sĩ nhất định</span>
+                            <select class="" id="s2example-22" multiple>
+                                <option></option>
+                                <optgroup label="Tour">
+                                    @if (ViewBag.TourLst != null)
+                                    {
+                                        foreach (var item in (List<HospitalAppoimentSolution.Data.ViewModels.DoctorView>)ViewBag.TourLst)
+                                        {
+                                            <option value="@item.ID">@item.Name-[@item.ID]</option>
+                                        }
+                                    }
+
+                                </optgroup>
+                            </select>
+                            @Html.TextBoxFor(model => model.DoctorApply, new { @class = "form-control", @placeholder = "Tour", @type = "hidden" })
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">Số tiền giảm</label>
+                            <span class="desc"></span>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.AmountReduced, new { @class = "form-control", @placeholder = "Số tiền được giảm", @type = "number" })
+                                @Html.ValidationMessageFor(model => model.AmountReduced)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">Số phần trăm giảm</label>
+                            <span class="desc"></span>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.PercentReduced, new { @class = "form-control", @placeholder = "Số phần trăm giảm", @type = "number" })
+                                @Html.ValidationMessageFor(model => model.PercentReduced)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">Avatar</label>
+                            <span class="desc"></span>
+                            <div class="controls">
+                                <img src="~/Content/img/no-image.png" id="reviewImg" style="width:150px;height:auto;cursor:pointer" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.Avatar, new { @class = "form-control", @placeholder = "..." })
+                            </div>
+                            <script type="text/javascript">
+                                $('#reviewImg').click(function () {
+                                    var finder = new CKFinder();
+                                    finder.selectActionFunction = function (fileUrl) {
+                                        $('#Avatar').val(fileUrl);
+                                        $('#reviewImg').attr("src", fileUrl);
+                                    };
+                                    finder.popup();
+                                });
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-6">Content</label>
+                            <span class="desc"></span>
+                            <div class="controls">
+                                @Html.TextAreaFor(model => model.Content, new { @class = "form-control autogrow", @placeholder = "Content" })
+
+                                <script type="text/javascript">
+                                    CKEDITOR.replace("Content");
+                                </script>
+                                @Html.ValidationMessageFor(model => model.Content)
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-bottom-30">
+                            <div class="text-left">
+                                <button type="button" onclick="Save()" class="btn btn-primary">Lưu</button>
+                                <button type="button" class="btn">Hủy</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function Save() {
+        var product = "";
+        $("#dTourApply li").each(function (index, item) {
+            if ($(item).attr("class").includes("select2-search-choice")) {
+                product += $(item).find("div")[0].innerHTML.split('[')[1].replace(']', '') + "|";
+            }
+        })
+        $("#DoctorApply").val(product);
+        $("#addForm").submit();
+    }
+</script>

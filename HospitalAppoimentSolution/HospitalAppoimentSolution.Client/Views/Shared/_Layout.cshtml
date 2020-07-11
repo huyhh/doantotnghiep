@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>BACH DANG HOSPITAL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1  maximum-scale=1 user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <link type="image/x-icon" href="/Content/img/favicon.png" rel="icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/Content/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/Content/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap-datetimepicker.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/Content/css/style.css">
+</head>
+<body class="default">
+
+    <div class="main-wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="/" class="navbar-brand logo">
+                        <img src="/Content/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="/" class="menu-logo">
+                            <img src="/Content/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active">
+                            <a href="/">Trang chủ</a>
+                        </li>
+                        <li>
+                            <a href="/bac-si.html">Bác sĩ</a>
+                        </li>
+                        <li>
+                            <a href="/tin-tuc.html">Tin tức</a>
+                        </li>
+                        <li>
+                            <a href="/khuyen-mai.html">Khuyến mãi</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    
+                    @Html.Action("HeaderWidget", "Patient")
+                </ul>
+            </nav>
+        </header>
+        <!-- /Header -->
+        @RenderBody()
+        <!-- Footer -->
+        <footer class="footer">
+
+            <!-- Footer Top -->
+            <div class="footer-top">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+
+                            <!-- Footer Widget -->
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/Content/img/footer-logo.png" alt="logo">
+                                </div>
+
+                            </div>
+                            <!-- /Footer Widget -->
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Footer Top -->
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="container-fluid">
+
+                    <!-- Copyright -->
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2020 Đồ án tốt nghiệp.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /Copyright -->
+
+                </div>
+            </div>
+            <!-- /Footer Bottom -->
+
+        </footer>
+        <!-- /Footer -->
+
+    </div>
+    <script src="/Content/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="/Content/js/popper.min.js"></script>
+    <script src="/Content/js/bootstrap.min.js"></script>
+    <script src="/Content/js/moment.min.js"></script>
+    <script src="/Content/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Slick JS -->
+    <script src="/Content/js/slick.js"></script>
+
+    <!-- Custom JS -->
+    <script src="/Content/js/script.js"></script>
+
+</body>
+</html>

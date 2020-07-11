@@ -1,0 +1,6 @@
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Helper\bin\Debug\HospitalAppoimentSolution.Helper.dll
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Helper\bin\Debug\HospitalAppoimentSolution.Helper.pdb
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Helper\obj\Debug\HospitalAppoimentSolution.Helper.csproj.CoreCompileInputs.cache
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Helper\obj\Debug\HospitalAppoimentSolution.Helper.dll
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Helper\obj\Debug\HospitalAppoimentSolution.Helper.pdb
+D:\JOB\WEB\DO.AN.HUY\HOSPITALSOLUTION\PROJECT\HospitalAppoimentSolution\HospitalAppoimentSolution.Helper\obj\Debug\HospitalAppoimentSolution.Helper.csprojAssemblyReference.cache

@@ -1,0 +1,71 @@
+﻿@model HospitalAppoimentSolution.Data.ViewModels.ShiftTimeView
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">Chỉnh sửa tin tức</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Chỉnh sửa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Chỉnh sửa</h4>
+                    </div>
+                    <div class="card-body">
+
+                        @using (Html.BeginForm("Edit", "ShiftTime", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">Tên</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Name" })
+                                    @Html.ValidationMessageFor(model => model.Name)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">Giờ bắt đầu</label>
+                                <span class="desc">Vui lòng nhập theo mẫu hh:mm với hh là giờ mm là phút. Ví dụ: 11:30</span>
+                                <div class="controls">
+                                    @Html.TextAreaFor(model => model.StartTime, new { @class = "form-control", @placeholder = "Giờ bắt đầu" })
+                                    @Html.ValidationMessageFor(model => model.StartTime)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">Giờ kết thúc</label>
+                                <span class="desc">Vui lòng nhập theo mẫu hh:mm với hh là giờ mm là phút. Ví dụ: 11:30</span>
+                                <div class="controls">
+                                    @Html.TextAreaFor(model => model.EndTime, new { @class = "form-control", @placeholder = "Giờ kết thúc" })
+                                    @Html.ValidationMessageFor(model => model.EndTime)
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-bottom-30">
+                                <div class="text-left">
+                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                    <button type="button" class="btn">Hủy</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
